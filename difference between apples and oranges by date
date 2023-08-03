@@ -1,0 +1,12 @@
+Problem Statement:
+Write an SQL query to report the difference between the number of apples and oranges sold each day.
+Return the result table ordered by sale_date.
+
+Solution: MySQL:
+select a.sale_date, a-b as diff from 
+(select sum(sold_num) a ,sale_date  from sales where fruit ='apples' group by sale_date) a
+join 
+(select sum(sold_num) b, sale_date  from sales where fruit = 'oranges'  group by sale_date) b
+on a.sale_date= b.sale_date
+order by sale_date;
+
