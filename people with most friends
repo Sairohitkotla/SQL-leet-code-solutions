@@ -1,0 +1,11 @@
+Problem Statement :
+Write an SQL query to find the people who have the most friends and
+ the most friends number. 
+ Problem:
+ select top 1 c as 'id' , count(c) as num from 
+(select requester_id as c from requestaccepted r1 
+union all 
+SELECT ACCEPTER_id as c from requestaccepted r2) as a
+group by c 
+order by count(c) desc ;
+ 
