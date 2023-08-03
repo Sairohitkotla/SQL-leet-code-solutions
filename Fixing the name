@@ -1,0 +1,8 @@
+Problem statement : 
+Fix the names so that only the first character is uppercase and the rest are lowercase.
+Solution: 
+select user_id , 
+concat(substring(upper(name),1,1), 
+lower(substring(name,2,len(name)))) 
+as name
+from users order by user_id;
