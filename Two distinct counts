@@ -1,0 +1,11 @@
+Problem statement:
+For each date_id and make_name, find the number of distinct lead_id's and distinct partner_id's.
+Return the result table in any order.
+
+Solution:
+select date_id , make_name  ,
+count(distinct(lead_id's),
+count(distinct(partner_id's)
+from  sales 
+group by 1,2 ;
+
