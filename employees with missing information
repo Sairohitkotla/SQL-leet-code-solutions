@@ -1,0 +1,13 @@
+Problem statement:
+Write a solution to report the IDs of all the employees with missing information. The information of an employee is missing if:
+The employee's name is missing, or
+The employee's salary is missing.
+Return the result table ordered by employee_id in ascending order.
+
+Problem solution:
+Ans) select e.employee_id from employees e left join salaries s on e. employee_id = s.employee_id 
+where s.salary is null
+ union all
+ select s.employee_id from employees e right join salaries s on e. employee_id = s.employee_id 
+where e.name is null
+order by employee_id ;
