@@ -1,4 +1,8 @@
+Problem statement :
+Write a solution to find the account_id of the accounts that should be banned from Leetflex. 
+An account should be banned if it was logged in at some moment from two different IP addresses.
 
+Return the result table in any order.
 Problem solution: 
 select distinct(l1.account_id) from Loginfo l1 join Loginfo l2 
 on l1.ip_address <> l2.ip_address and l1.account_id = l2.account_id  and 
