@@ -1,0 +1,7 @@
+Problem statement:
+Write a solution to find the team size of each of the employees.
+
+Problem solution:
+select employee_id , team_size from employee e join
+ (select team_id, count(team_id) as team_size from employee group by team_id ) a
+ on e.team_id = a.Team_id;
