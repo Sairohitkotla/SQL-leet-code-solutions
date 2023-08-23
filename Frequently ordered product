@@ -1,0 +1,16 @@
+Problem statement:
+Write an SQL query to find the most frequently ordered product(s) for each customer.
+The result table should have the product_id and product_name for each customer_id who ordered at least one order.
+
+Problem solution:
+with CTE as 
+( 
+  select Customer_id , product_id , count(product_id) as ct from orders
+  group by 1,2 
+)
+select customer_id , CTE.product_id , product_name from CTE  
+join products p on
+p.product_id = CTE.product_id 
+where (customer_id, ct)  in ( select customer_id , max(ct) from
+ CTE  group by 1
+)
