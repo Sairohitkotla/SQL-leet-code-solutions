@@ -1,0 +1,11 @@
+Problem stateent:
+Write an SQL query to find the start and end number of continuous ranges in the table Logs.
+Return the result table ordered by start_id.
+
+Problem Solution:
+select  l1.log_id as start_id , min(l2.log_id) as end_id from (select log_id from logs 
+  where log_id-1 not in (select log_id from logs)) l1 join 
+ (select log_id from logs 
+  where log_id+1 not in (select log_id from logs) )  l2 
+  on l2.log_id >= l1.log_id  
+  group by 1 ;
